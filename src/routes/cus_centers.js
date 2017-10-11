@@ -42,34 +42,38 @@ toggle = () => {
     
     return (
         <div>
-   <Layout>
-   <Content style={{ padding: '0 0px' }}>
-
+{/* Layout 为客户中心的整块内容 #fff为白色背景 */}
      <Layout style={{ padding: '10px 0', background: '#fff' }}>
-       <Sider
+     <Sider
         width={150} 
-        style={{ background: '#fff' }} 
+        style={{  background: '#d9d9d9' }}
         collapsible={true}
         collapsed={this.state.collapsed}
         trigger={null}
         collapsedWidth={0}
          >
          {/* collapsed={this.state.collapsed} */}
-       
+         <div className="logo" />
          
      
          {/* 侧边导航栏 */}
          <Menu
+            theme="dark"
            mode="inline"
-           defaultSelectedKeys={['1']}
-           defaultOpenKeys={['sub1']}
-           style={{ height: 280 }}
-         >
            
+           defaultOpenKeys={['sub1']}
+          
+         >
+         {/* style={{ height: 500 }} */}
+
          <Menu.Item key="1">
-         <Icon type="pie-chart" />
-         <span>客户信息管理</span>
+ 
+         <Link to={'/cus_centers/cuscenters_content'}> 
+            <Icon type="pie-chart" />
+            <span>客户信息管理</span>
+         </Link>
        </Menu.Item>
+
         
          </Menu>
        </Sider>
@@ -84,9 +88,7 @@ toggle = () => {
          {this.props.children}
        </Content>
      </Layout>
-   </Content>
 
- </Layout>
     </div>
      
 

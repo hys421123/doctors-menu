@@ -1,0 +1,181 @@
+header{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+aside{
+  width: 200px;
+  position: fixed;
+  top: 95px;
+  left: 0;
+  height: calc( ~" 100% - 95px " );
+  overflow-y: auto;
+  .ant-menu-root,.ant-menu-submenu>.ant-menu{
+    background-color: #255788;
+    color: #fff;
+  }
+  //
+  .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected,{
+    background-color: #32618f;
+  }.ant-menu-sub.ant-menu-inline>.ant-menu-item:hover{
+    background-color: #32618f;
+  }
+  .ant-menu-item:active, .ant-menu-submenu-title:active{
+    background-color: #255788;
+  }
+  .ant-menu-submenu-open .ant-menu-submenu-title{
+    box-shadow: rgba(0,0,0,.25) 0 1px 0, inset rgba(255,255,255,.16) 0 1px 0;
+  }
+  //
+  .ant-menu-item-active, .ant-menu-item:hover, .ant-menu-submenu-active, .ant-menu-submenu-title:hover, .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open{
+    color: #fff;
+  }
+  .ant-menu-inline .ant-menu-item:after, .ant-menu-vertical .ant-menu-item:after{
+    border-color: #1abb9c;
+  }
+  .ant-menu-item>a,.ant-menu-item>a:hover{
+    color: #fff;
+  }
+  .ant-menu-item-selected, .ant-menu-item-selected>a, .ant-menu-item-selected>a:hover{
+    color: #fff;
+  }
+}
+.root {
+  background: #6F7A85;
+  width: 100%;
+  position: relative;
+  height: 55px;
+  .logo {
+    
+    padding-left: 11px;
+    padding-top: 17px;
+    padding-bottom: 0px;
+    text-align: left;
+    &>img {
+      height: 45px;
+      vertical-align: middle;
+    }
+    .logoname {
+      font-size: 16px;
+      color: #fff;
+      vertical-align: middle;
+      margin-left: 5px;
+    }
+  }
+  .user-info {
+    padding: 10px 0;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    .user-header {
+      width: 75px;
+      float: left;
+      img {
+        width: 70%;
+        background: #fff;
+        margin-left: 15%;
+        z-index: 1000;
+        position: inherit;
+        border: 1px solid rgba(52, 73, 94, .44);
+        padding: 4px;
+        border-radius: 50%;
+      }
+    }
+    .user-name {
+      width: 90px;
+      float: left;
+      span {
+        font-size: 16px;
+        line-height: 30px;
+        color: #fff;
+        font-weight: 500;
+      }
+      h2 {
+        font-size: 14px;
+        color: #fff;
+        margin: 0;
+        font-weight: 500;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+    .message {
+      margin-top: 5px;
+      margin-left: 10px;
+      width: 75px;
+      cursor: pointer;
+      padding: 10px 0px 10px 10px;
+      background: #25646A;
+      float: left;
+      span {
+        font-size: 14px;
+        color: #fff;
+        vertical-align: middle;
+        margin-left: 5px;
+      }
+    }
+    .login-out {
+      cursor: pointer;
+      float: left;
+      font-size: 39px;
+      margin: 0 20px;
+      color: #fff;
+    }
+  }
+  @media (max-width: 991px) {
+    .user-info {
+      display: none;
+    }
+  }
+  .language {
+    float: right;
+    margin: 10px 20px 10px 0;
+    font-size: 13px;
+    &-items {
+      color: #fff;
+      .item {
+        cursor: pointer;
+      }
+      .space {
+        margin: 0 5px;
+      }
+    }
+  }
+}
+#app{
+  height: 100%;
+  & > div{
+    height: 100%;
+  }
+}
+main{
+  height: 100%;
+  width: 100%;
+  padding-top: 95px;
+  padding-left: 200px;
+  & > div{
+    height: 100%;
+    overflow-y: auto;
+    padding: 10px 20px;
+  }
+}
+.bordern{
+  height: 30px;
+  line-height: 30px;
+  padding-left: 5px;
+  border: 1px solid #e9e9e9;
+  border-bottom-width: 0;
+}
+.ant-table-wrapper{
+  .center{
+    text-align: center;
+  }
+.modal{
+  width:"1000px"
+}
+}
+.ant-table-tbody>tr.select-active>td{
+    background: #ecf6fd;
+}

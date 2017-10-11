@@ -406,23 +406,23 @@ const columns=[
     },{
       title: '联系人',
       className: 'center',
-      dataIndex: 'createDate',
+      dataIndex: 'contactName',
     },{
       title: '联系人电话',
       className: 'center',
-      dataIndex: 'createDate',
+      dataIndex: 'contactPhone',
     },{
       title: '联系人关系',
       className: 'center',
-      dataIndex: 'createDate',
+      dataIndex: 'contactRelation',
     },{
       title: '工作单位',
       className: 'center',
-      dataIndex: 'createDate',
+      dataIndex: 'company',
     },{
       title: '登记人',
       className: 'center',
-      dataIndex: 'createDate',
+      dataIndex: 'createUser',
     },{
       title: '挂失人',
       className: 'center',
@@ -430,11 +430,11 @@ const columns=[
     },{
       title: '挂失方式',
       className: 'center',
-      dataIndex: 'createDate',
+      dataIndex: 'reportLoss',
     },{
       title: '挂失时间',
       className: 'center',
-      dataIndex: 'createDate',
+      dataIndex: 'changeDate',
     }
   
   ];

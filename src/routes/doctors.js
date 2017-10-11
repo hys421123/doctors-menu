@@ -52,7 +52,7 @@ toggle = () => {
    <Layout>
    <Content style={{ padding: '0 0px' }}>
 
-     <Layout style={{ padding: '24px 0', background: '#fff' }}>
+     <Layout style={{ padding: '10px 0', background: '#fff' }}>
        <Sider
         width={150} 
         style={{ background: '#fff' }} 

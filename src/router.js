@@ -16,7 +16,8 @@ function RouterConfig({ history }) {
   return (
     <Router history={history}>
 
- 
+<Redirect from="/" to="/cus_centers/cuscenters_content" exact />
+
       <Route path="/" component={Base2}>
       {/* 典型的 react-router 2.X写法 */}
 		            <IndexRoute component={CusCenters}/>  

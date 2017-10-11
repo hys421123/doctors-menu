@@ -24,21 +24,14 @@ constructor(props){
         theme: 'dark',
         current: '1',
         collapsed: false,
-        marginsize:180,
       }
 }//constructor
 toggle = () => {    
-    if(this.state.collapsed){
-      this.setState({
-        collapsed: false,
-        marginsize: 180,
-      });
-    }else{
-      this.setState({
-        collapsed: true,
-        marginsize: 50,
-      });
-    }//if_else
+
+  this.setState({
+    collapsed: !this.state.collapsed,
+  });
+
   }
 
 
@@ -85,12 +78,7 @@ toggle = () => {
        <Icon   type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
      </Button>
 
-       {/* <Icon
-           className="trigger"
-           type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-           onClick={this.toggle}
-           style={{ marginTop:30 }} 
-         /> */}
+
        {/* 右边主内容 */}
        <Content style={{ padding: '0 24px', minHeight: 280 }}>
          {this.props.children}

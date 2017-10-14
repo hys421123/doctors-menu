@@ -24,7 +24,7 @@ export default class Content1 extends Component {
   render() {
     return (
       <div  >
-       我是客户信息管理内容1
+       
 
       <div className={styles.ant_advanced_search_form}>
        <Row >
@@ -308,16 +308,29 @@ componentDidMount() {
      a.click();
  }
 
+
 	render(){
 // console.log('Table2_ ',this.props);
+const data2=[{
+  id: 1,
+  contractName:'woshishui',
+  contractNum: '0011',
 
+  key: '1',
+},{
+  id: 2,
+  contractName:'woshishui2',
+  contractNum: '0012',
+
+  key: '2',
+}];
 
 const columns=[
 	{
       title: '序号',
       render: (t, r, i) => (i + 1),
       className: 'center',
-   
+      fixed: 'left'
     },
 	
 	{
@@ -424,9 +437,10 @@ const columns=[
       className: 'center',
       dataIndex: 'createUser',
     },{
+      // 卡变动记录中的 操作员即 挂失人
       title: '挂失人',
       className: 'center',
-      dataIndex: 'createDate',
+      dataIndex: 'changeOperator',
     },{
       title: '挂失方式',
       className: 'center',
@@ -445,17 +459,17 @@ const columns=[
 
           <Row style={{ marginTop: 10 }}>
       
-            <Col className={styles.ant_advanced_search_form} style={{ marginBottom: 10 }}>
-              <Button style={{ marginRight: 10 }} onClick={this.showModal.bind(this, { type: 'add' })}>新增</Button>
-              <Button style={{ marginRight: 10 }} disabled={this.state.selectedRowKeys.length !== 1} onClick={this.showModal.bind(this, { type: 'modify', con: this.state.checkeddata[0] })}>修改</Button>
-              <Button style={{ marginRight: 10 }} disabled={this.state.selectedRowKeys.length !== 1} onClick={this.showModal.bind(this, { type: 'check', con: this.state.checkeddata[0] })}>查看</Button>
+            <Col className={styles.ant_advanced_search_form} style={{ background: '#CCCCCC',marginBottom: 10 }}>
+              <Button style={{background:'#333333',color: 'white', marginRight: 10 }} onClick={this.showModal.bind(this, { type: 'add' })}>新增</Button>
+              <Button style={{ marginRight: 10 }} disabled={this.state.selectedRowKeys.length !== 1} onClick={this.showModal.bind(this, { type: 'modify', con: this.state.checkeddata[0] })}>读卡</Button>
               <Button disabled={this.state.selectedRowKeys.length === 0} style={{ marginRight: 10 }} onClick={this.action.bind(this, 'del')}>刪除</Button>
-              <Button style={{ marginRight: 10 }} onClick={this.exportExcel}>Excel导出</Button>
+              <Button style={{ marginRight: 10 }} onClick={this.exportExcel}>就诊预约</Button>
             </Col>
             <Col>
+            {/* this.state.data.data */}
               <Table
                 columns={columns}
-                dataSource={this.state.data.data}
+                dataSource={data2}
 
                rowClassName={(record, index) => {
                   return this.state.selectedRowKeys.indexOf(record.id) === -1 ? '' : 'select-active';
@@ -482,7 +496,8 @@ const columns=[
                   },
                 }}
                 rowKey={record => record.id} 
-                bordered
+                scroll={{ x: '200%' }}
+               
               />
 
             </Col>

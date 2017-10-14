@@ -211,7 +211,7 @@ class Table2 extends React.Component{
 this.state = {
     loading: false,
     pagesize: 10,
-    data: {},
+    data: [],
 
     selectedRowKeys: [],
     checkeddata: [],
@@ -271,6 +271,22 @@ componentDidMount() {
 //     $q.get(url, data => {
 //       this.setState({ data, selectedRowKeys: [], checkeddata: [], loading: false });
 //     });
+const that=this;
+fetch('/users',{                       // 发送请求
+  method:'GET',                            //请求方式    (可以自己添加header的参数)    
+  mode:'cors',// 避免cors攻击
+  credentials: 'include'                
+}).then(function(response) {
+  //打印返回的json数据
+  response.json().then(function(data){      //将response进行json格式化
+    console.log(data.data);                        //打印
+
+   that.setState({ data: data.data });
+
+  }); 
+}).catch(function(e) {
+  console.log("Oops, error");
+});
 
   }
 
@@ -313,16 +329,16 @@ componentDidMount() {
 // console.log('Table2_ ',this.props);
 const data2=[{
   id: 1,
-  contractName:'woshishui',
-  contractNum: '0011',
+  register_date:'2015',
+  card_type: '诊疗卡',
 
-  key: '1',
+  key: 1,
 },{
   id: 2,
-  contractName:'woshishui2',
-  contractNum: '0012',
+  register_date:'2016',
+  card_type: '诊疗卡',
 
-  key: '2',
+  key: 2,
 }];
 
 const columns=[
@@ -336,32 +352,32 @@ const columns=[
 	{
       title: '登记时间',
       className: 'center',
-      dataIndex: 'contractName',
+      dataIndex: 'register_date',
    
     }, {
       title: '医疗卡类型',
       className: 'center',
-      dataIndex: 'contractNum',
+      dataIndex: 'card_type',
    
     }, {
       title: '卡号',
       className: 'center',
-      dataIndex: 'contractTypeDesp',
+      dataIndex: 'card_id',
     
     },  {
       title: '状态',
       className: 'center',
-      dataIndex: 'contractPrice',
-      key:'contractPrice',
+      dataIndex: 'card_state',
+     
     },  {
       title: '发卡人',
       className: 'center',
-      dataIndex: 'statusDesp',
+      dataIndex: 'card_distributor',
       
     },{
       title: '发卡日期',
       className: 'center',
-      dataIndex: 'createDate',
+      dataIndex: 'card_date',
     
     },{
       title: ' 姓名',
@@ -391,7 +407,7 @@ const columns=[
     },{
       title: '身份证号',
       className: 'center',
-      dataIndex: 'idcardNum',
+      dataIndex: 'idcard_num',
     
     },{
       title: '电话',
@@ -415,7 +431,7 @@ const columns=[
     },{
       title: '家庭住址',
       className: 'center',
-      dataIndex: 'aaa',
+      dataIndex: 'address',
     },{
       title: '联系人',
       className: 'center',
@@ -452,6 +468,12 @@ const columns=[
     }
   
   ];
+
+console.log('this.state.data_ ',this.state.data);
+console.log('data2_ ',data2);
+
+
+
   return (
       <div>
         <Spin spinning={this.state.loading === true}>
@@ -467,9 +489,10 @@ const columns=[
             </Col>
             <Col>
             {/* this.state.data.data */}
+            {/* this.state.data */}
               <Table
                 columns={columns}
-                dataSource={data2}
+                dataSource={this.state.data}
 
                rowClassName={(record, index) => {
                   return this.state.selectedRowKeys.indexOf(record.id) === -1 ? '' : 'select-active';

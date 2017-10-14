@@ -11,21 +11,50 @@ let tableListData = {};
 if (!global.tableListData) {
   const data = mockjs.mock({
     'data|100': [{
-      'id|+1':'@id',
-      name: '@name',
-      'mobile': /1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\d{8}/,
-      'avatar': () => {
-        return Random.image('125x125');
+      'id':'@INCREMENT(1)', //序号
+      
+      'register_date': '@NOW(yy-MM-dd HH:mm:ss)',  //随机登记时间
+      'card_type':'诊疗卡',
+   
+      'card_id':()=>{
+        return Random.increment(1)+1000; 
       },
-      'status|1-2': 1,
+      'card_state':()=>{// 就诊卡状态
+        Random.extend({
+          cardstates: ['有效卡', '补卡停用', '退卡停用', '挂失停用'],
+          cardstate: function(date){
+              return this.pick(this.cardstates)
+          }
+      });
+      return Random.cardstate();
+
+
+      },
+      'card_distributor':'@CNAME', //发卡人
+      'card_date':'@NOW(yy-MM-dd HH:mm:ss)',
+      'name':'@CNAME',
+      'gender':()=>{//性别
+        Random.extend({
+          arrays: ['男', '女'],
+          array: function(date){
+              return this.pick(this.arrays)
+          }
+      });
+      return Random.array();
+      },
+      'age':'@INTEGER(0,100)',
+      'idcard_num':'@ID',
+      'phonenum': /1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\d{8}/,
       'email': () => {
         return Random.email('visiondk.com');
       },
-      'isadmin|0-1': 1,
-      'created_at': '@datetime',
-      'updated_at': () => {
-        return Random.datetime('yyyy-MM-dd HH:mm:ss');
+      'address':'@REGION',
+
+      'avatar': () => {
+        return Random.image('125x125');
       },
+
+
     }],
     page: {
       total: 100,

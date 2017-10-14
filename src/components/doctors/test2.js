@@ -28,7 +28,7 @@ fetch('/users',{                       // 发送请求
 }).then(function(response) {
   //打印返回的json数据
   response.json().then(function(data){      //将response进行json格式化
-    console.log(data);                        //打印
+    // console.log(data.data);                        //打印
   }); 
 }).catch(function(e) {
   console.log("Oops, error");

@@ -20,24 +20,22 @@ function RouterConfig({ history }) {
 
 <Redirect from="/" to="/cus_centers/cuscenters_content" exact />
 
-      <Route path="/" component={Base2}>
-      {/* 典型的 react-router 2.X写法 */}
-		            <IndexRoute component={CusCenters}/>  
+ 
+<Route path="/" component={Base2}>
+{/* 典型的 react-router 2.X写法 */}
+          <IndexRoute component={CusCenters}/>  
+        <Route path="/cus_centers" component={CusCenters} >
+              <IndexRoute component={CusCentersContent}/> 
+              <Route path="/cus_centers/cuscenters_content" component={CusCentersContent} />
+              <Route path="/cus_centers/client_details" component={Client} />
+          </Route>
 
-
-              <Route path="/cus_centers" component={CusCenters} >
-                    <IndexRoute component={CusCentersContent}/> 
-                    <Route path="/cus_centers/cuscenters_content" component={CusCentersContent} />
-                    <Route path="/cus_centers/client_details" component={Client} />
-
-                </Route>
-
-                <Route path="/doctors" component={Doctors} >
-                      <IndexRoute component={Test2}/>
-                      <Route path="/doctors/test2" component={Test2} />
-                      <Route path="/test4" component={Test4} />
-                </Route>
-		  </Route>
+          <Route path="/doctors" component={Doctors} >
+                <IndexRoute component={Test2}/>
+                <Route path="/doctors/test2" component={Test2} />
+                <Route path="/test4" component={Test4} />
+          </Route>
+</Route>
 
   
      

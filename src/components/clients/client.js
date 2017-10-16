@@ -1,28 +1,38 @@
 import React, { Component } from 'react';
-import { Breadcrumb,Row, Col, Spin, Button, Table, Form, Modal, DatePicker, Select, Popconfirm, message, Cascader, Input } from 'antd';
+import {Tabs, Breadcrumb,Row, Col, Spin, Button, Table, Form, Modal, DatePicker, Select, Popconfirm, message, Cascader, Input } from 'antd';
 import {  browserHistory } from 'dva/router';
+const TabPane= Tabs.TabPane;
+import ClientTab1 from './clientTab1'
+import ClientTab2 from './clientTab2'
+import ClientTab3 from './clientTab3'
 
 export default class Client extends Component {
 
 constructor(props){
  super(props);
- console.log('props_ ',props);
+//  console.log('props_ ',props);
  
 
 }
 handleDelete = () => {
   console.log('delete');
   
- }//showModal
+ }//handleDelete
 
  handleBack=()=>{
   // console.log('back_ ',browserHistory);
   browserHistory.goBack();
   
  }
-
+tabChange=()=>{
+  console.log('tabChange');
+  
+}
 
   render() {
+    const data=this.props.location.query;
+    // console.log('data_ ',data);
+    
     return (
       <div>
          <Row style={{ marginTop: 10 }}>
@@ -33,8 +43,27 @@ handleDelete = () => {
           </Row>
           <hr style={{ marginTop:10 }}/>
 
+          <Row type="flex" justify="center" >
+              <h1><b>{data.name}</b></h1>
+          </Row>
 
-       我是客户信息详情
+          <Tabs onChange={this.tabChange.bind(this)} type="card" style={{ marginRight: 200 }} >
+              <TabPane tab="客户基本信息" key="1">
+                <ClientTab1 />
+              </TabPane>
+
+              <TabPane tab="发卡信息" key="2">
+                <ClientTab2 />
+              </TabPane>
+
+              <TabPane tab="账户出入信息" key="3">
+                <ClientTab3 />
+              </TabPane>
+
+          </Tabs>
+
+
+   
       </div>
     );
   }

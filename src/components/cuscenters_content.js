@@ -501,22 +501,23 @@ const that=this;
                   {/* const selectedRowKeys = this.state.selectedRowKeys;
                   const checkeddata = this.state.checkeddata;
                   const keyIndex = selectedRowKeys.indexOf(record.id); */}
-                  console.log('onRowClick2');
+                  console.log('onRowClick2_browserHistory',browserHistory);
 
                   // Link 之外的 跳法
 
                   {/* console.log('record.data',record); */}
                   
                   {/* 一种跳转 传参写法 */}
-                  {/* browserHistory.push({
-                    pathname:  '/cus_centers/client_details',
-                    query: record,
-                  }); */}
-                  
-                  browserHistory.goForward({
+                  browserHistory.push({
                     pathname:  '/cus_centers/client_details',
                     query: record,
                   });
+                  
+                  {/* 这种写法貌似只跟 goBack组成一起 使用 */}
+                  {/* browserHistory.goForward({
+                    pathname:  '/cus_centers/client_details',
+                    query: record,
+                  }); */}
            
 
                   {/* if (keyIndex === -1) {

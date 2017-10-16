@@ -9,7 +9,7 @@ const Option = Select.Option;
 const FormItem = Form.Item;
 var events = require('events');
 var eventEmitter = new events.EventEmitter();
-
+import {  browserHistory,routerRedux,Link } from 'dva/router';
 
 export default class Content1 extends Component {
 
@@ -279,7 +279,7 @@ fetch('/users',{                       // 发送请求
 }).then(function(response) {
   //打印返回的json数据
   response.json().then(function(data){      //将response进行json格式化
-    console.log(data.data);                        //打印
+    // console.log(data.data);                        //打印
 
    that.setState({ data: data.data });
 
@@ -469,10 +469,10 @@ const columns=[
   
   ];
 
-console.log('this.state.data_ ',this.state.data);
-console.log('data2_ ',data2);
+// console.log('this.state.data_ ',this.state.data);
+// console.log('data2_ ',data2);
 
-
+const that=this;
 
   return (
       <div>
@@ -498,10 +498,28 @@ console.log('data2_ ',data2);
                   return this.state.selectedRowKeys.indexOf(record.id) === -1 ? '' : 'select-active';
                 }}
                 onRowClick={(record, index, event) => {
-                  const selectedRowKeys = this.state.selectedRowKeys;
+                  {/* const selectedRowKeys = this.state.selectedRowKeys;
                   const checkeddata = this.state.checkeddata;
-                  const keyIndex = selectedRowKeys.indexOf(record.id);
-                  if (keyIndex === -1) {
+                  const keyIndex = selectedRowKeys.indexOf(record.id); */}
+                  console.log('onRowClick2');
+
+                  // Link 之外的 跳法
+
+                  {/* console.log('record.data',record); */}
+                  
+                  {/* 一种跳转 传参写法 */}
+                  {/* browserHistory.push({
+                    pathname:  '/cus_centers/client_details',
+                    query: record,
+                  }); */}
+                  
+                  browserHistory.goForward({
+                    pathname:  '/cus_centers/client_details',
+                    query: record,
+                  });
+           
+
+                  {/* if (keyIndex === -1) {
                     selectedRowKeys.push(record.id);
                     checkeddata.push(record);
                   } else {
@@ -510,7 +528,7 @@ console.log('data2_ ',data2);
                   }
                   this.setState({
                     selectedRowKeys, checkeddata,
-                  });
+                  }); */}
                 }}
                 rowSelection={{
                   selectedRowKeys: this.state.selectedRowKeys,

@@ -1,7 +1,3 @@
-/* @flow */
-
-/* @flow */
-
 import React, { Component } from 'react';
 
 export default class Test4 extends Component {

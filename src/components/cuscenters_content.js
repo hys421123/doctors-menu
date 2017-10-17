@@ -255,22 +255,6 @@ componentDidMount() {
 
  getData = (page,search2) => {
 
-//     let url = $q.url + `/hys/contract/list/${page}/${this.state.pagesize}?`;
-
-//  if(search2!=undefined){
-//       const search = JSON.parse(JSON.stringify(search2));
-//           for (let i in search) {
-//       url += `Q=${i}=` + search[i] + '&';9999
-//     }
-//     // console.info('search2 有定义');
-//    }
-
-//     this.setState({
-//       loading: true,
-//     });
-//     $q.get(url, data => {
-//       this.setState({ data, selectedRowKeys: [], checkeddata: [], loading: false });
-//     });
 const that=this;
 fetch('/users',{                       // 发送请求
   method:'GET',                            //请求方式    (可以自己添加header的参数)    
@@ -317,11 +301,23 @@ fetch('/users',{                       // 发送请求
 
   }//action
 
-  exportExcel=()=>{
-    console.log('exportExcel');
-     var a = document.createElement('a');
-     a.href ="http://10.110.200.106/services/hys/exportexcel/download/exportExcelProducer";
-     a.click();
+  handleAdd=()=>{
+      console.log('add_');
+         browserHistory.push({
+                    pathname:  '/cus_centers/client_add',
+                    
+                  });
+  }
+
+  readCard=()=>{
+    console.log('readCard');
+    
+  }
+
+
+  medicalOrder=()=>{
+    console.log('medicalOrder');
+
  }
 
 
@@ -482,10 +478,10 @@ const that=this;
           <Row style={{ marginTop: 10 }}>
       
             <Col className={styles.ant_advanced_search_form} style={{ background: '#CCCCCC',marginBottom: 10 }}>
-              <Button style={{background:'#333333',color: 'white', marginRight: 10 }} onClick={this.showModal.bind(this, { type: 'add' })}>新增</Button>
-              <Button style={{ marginRight: 10 }} disabled={this.state.selectedRowKeys.length !== 1} onClick={this.showModal.bind(this, { type: 'modify', con: this.state.checkeddata[0] })}>读卡</Button>
+              <Button style={{background:'#333333',color: 'white', marginRight: 10 }} onClick={this.handleAdd.bind(this, { type: 'add' })}>新增</Button>
+              <Button style={{ marginRight: 10 }} disabled={this.state.selectedRowKeys.length !== 1} onClick={this.readCard.bind(this, { type: 'modify', con: this.state.checkeddata[0] })}>读卡</Button>
               <Button disabled={this.state.selectedRowKeys.length === 0} style={{ marginRight: 10 }} onClick={this.action.bind(this, 'del')}>刪除</Button>
-              <Button style={{ marginRight: 10 }} onClick={this.exportExcel}>就诊预约</Button>
+              <Button style={{ marginRight: 10 }} onClick={this.medicalOrder.bind(this)}>就诊预约</Button>
             </Col>
             <Col>
             {/* this.state.data.data */}

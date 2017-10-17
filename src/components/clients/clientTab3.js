@@ -61,7 +61,7 @@ export default class ClientTab3 extends Component {
 
     return (
       <div>
-    <Row style={{ marginTop: 10 }} type="flex" justify="end" >
+    <Row style={{ marginTop: 10,marginRight:15 }} type="flex" justify="end" >
             <Col >
               <Button  onClick={this.prestore.bind(this)}  >预存</Button>
               <Button style={{background:'#333333',color: 'white', marginLeft: 10 }}  onClick={this.prestoreWriteoff.bind(this)}>预存冲销</Button>

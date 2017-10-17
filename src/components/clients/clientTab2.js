@@ -65,7 +65,7 @@ changeCard=()=>{
     return (
       <div>
        
-     <Row style={{ marginTop: 10 }} type="flex" justify="end" >
+     <Row style={{ marginTop: 10 ,marginRight:15 }} type="flex" justify="end" >
             <Col >
               <Button  onClick={this.handoutCard.bind(this)}  >发卡</Button>
               <Button style={{background:'#333333',color: 'white', marginLeft: 10 }}  onClick={this.changeCard.bind(this)}>换卡</Button>

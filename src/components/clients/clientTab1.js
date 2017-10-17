@@ -27,7 +27,7 @@ export default class ClientTab1 extends Component {
 
     return (
       <div  >
-     <Row style={{ marginTop: 10 }} type="flex" justify="end" >
+     <Row style={{ marginTop: 10,marginRight:15  }} type="flex" justify="end"  >
             <Col >
               <Button  onClick={this.handleEdit.bind(this)}  >编辑</Button>
               <Button style={{background:'#333333',color: 'white', marginLeft: 10 }}  onClick={this.phoneVerify.bind(this)}>电话验证</Button>
@@ -218,7 +218,7 @@ export default class ClientTab1 extends Component {
                   </Col>
             </Row>
 
-            <Row style={{ marginTop: 10 }} justify="center"  type="flex" >
+            <Row style={{ marginTop: 10 }} justify="start"  type="flex" >
               <Col span="5">
                 保险公司: 太平洋
               </Col>
@@ -237,7 +237,7 @@ export default class ClientTab1 extends Component {
 
           </Row>
 
-          <Row style={{ marginTop: 10 }} justify="center"  type="flex" >
+          <Row style={{ marginTop: 10 }} justify="start"  type="flex" >
           <Col span="5">
             保险公司: 平安
           </Col>

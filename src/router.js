@@ -4,8 +4,8 @@ import Login from './routes/Login';
 
 import CusCenters from  './routes/cus_centers';
 import CusCentersContent from  './components/cuscenters_content';
-import Client from './components/clients/client';
-
+import Client from './components/clients/clientDetails';
+import ClientAdd from './components/clients/clientAdd';
 
 import Doctors from  './routes/doctors';
 import Test4 from './components/doctors/test4';
@@ -28,6 +28,8 @@ function RouterConfig({ history }) {
               <IndexRoute component={CusCentersContent}/> 
               <Route path="/cus_centers/cuscenters_content" component={CusCentersContent} />
               <Route path="/cus_centers/client_details" component={Client} />
+              <Route path="/cus_centers/client_add" component={ClientAdd} />
+
           </Route>
 
           <Route path="/doctors" component={Doctors} >

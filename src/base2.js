@@ -48,15 +48,15 @@ toggle = () => {
     
     
     return (
-        <div>
+        <div style={{ height:'100%' , background: '#BB3ED3' }} >
        
         <div  >
         <Head />
         </div>
 
-        <Layout>
+        <Layout  style={{ height:'100%',background:'#F8F8F8' }} >
       
-      <Header className="header">
+      <Header >
    
        
 
@@ -78,11 +78,12 @@ toggle = () => {
         </Menu>
       </Header>
 
-          <Content style={{ minHeight: 280 }}>
+          <Content style={{ height:'100%' }}>
             {this.props.children}
+            
           </Content>
    
-      <Footer style={{ textAlign: 'center' }}>
+      <Footer style={{ textAlign: 'center', height:50, background: '#C2BFBF' }}>
         Ant Design ©2017 Created by Ant UED
       </Footer>
     </Layout>

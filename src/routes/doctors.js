@@ -48,11 +48,11 @@ toggle = () => {
     
     
     return (
-        <div>
-   <Layout>
-   <Content style={{ padding: '0 0px' }}>
+        <div >
+   <Layout >
+   <Content style={{ padding: '0 0px'  }}>
 
-     <Layout style={{ padding: '10px 0', background: '#fff' }}>
+     <Layout style={{ padding: '10px 0', background: '#fff'  }}>
        <Sider
         width={150} 
         style={{ background: '#fff' }} 

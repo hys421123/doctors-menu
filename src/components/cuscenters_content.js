@@ -407,7 +407,7 @@ const columns=[
     },{
       title: '身份证号',
       className: 'center',
-      dataIndex: 'idcard_num',
+      dataIndex: 'certificate_num',
     
     },{
       title: '电话',
@@ -435,11 +435,11 @@ const columns=[
     },{
       title: '联系人',
       className: 'center',
-      dataIndex: 'contactName',
+      dataIndex: 'contact_name',
     },{
       title: '联系人电话',
       className: 'center',
-      dataIndex: 'contactPhone',
+      dataIndex: 'contact_phone',
     },{
       title: '联系人关系',
       className: 'center',

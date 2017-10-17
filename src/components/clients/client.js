@@ -25,7 +25,7 @@ handleDelete = () => {
   
  }
 tabChange=()=>{
-  console.log('tabChange');
+  // console.log('tabChange');
   
 }
 
@@ -49,7 +49,7 @@ tabChange=()=>{
 
           <Tabs onChange={this.tabChange.bind(this)} type="card" style={{ marginRight: 200 }} >
               <TabPane tab="客户基本信息" key="1">
-                <ClientTab1 />
+                <ClientTab1 data={data}/>
               </TabPane>
 
               <TabPane tab="发卡信息" key="2">

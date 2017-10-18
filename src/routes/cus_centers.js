@@ -43,9 +43,10 @@ toggle = () => {
     return (
         <div style={{ height:'100%' }}>
 {/* Layout 为客户中心的整块内容 #fff为白色背景 */}
-     <Layout style={{ padding: '10px 0', background: '#fff' }}>
+     <Layout style={{ padding: '10px 0', background: '#fff',minHeight:1000 }}>
      <Sider
         width={150} 
+        
         style={{  background: '#d9d9d9'  }}
         collapsible={true}
         collapsed={this.state.collapsed}

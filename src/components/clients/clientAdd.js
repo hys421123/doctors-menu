@@ -3,8 +3,44 @@ import {Tabs, Breadcrumb,Row, Col, Spin, Button, Table, Form, Modal, DatePicker,
 import {  browserHistory } from 'dva/router';
 const FormItem=Form.Item;
 const Option = Select.Option;
+const confirm = Modal.confirm;
+import CardModal from './cardModal'
+
+
 export default class ClientAdd extends Component {
 
+  constructor(props){
+   super(props);
+   this.state={
+    visible:false,
+   };
+  }
+  // 确认框弹出
+  showConfirm=()=> {
+    const that=this;
+
+    confirm({
+      title: '确认保存客户信息吗?',
+    
+      onOk() {
+        // console.log('confirm_OK');
+        that.setState({
+          visible:true,
+        });
+
+
+      },
+      onCancel() {
+        // console.log('Cancel');
+      },
+    });
+  }
+
+  closeModal=()=>{
+    this.setState({
+      visible:false,
+    });
+  }
 
 
   handleBack=()=>{
@@ -14,18 +50,22 @@ export default class ClientAdd extends Component {
    }
 
    handleSave=()=>{
-
+        console.log('保存发卡了');
+     
    }
 
    handleReadCard=()=>{
 
    }
    handleSaveSend=()=>{
-
+      // console.log('保存发卡 in ClientAdd');
+      this.showConfirm();
    }
 
   render() {
 
+    // console.log('state_visible ',this.state.visible );
+    
     
 
     return (
@@ -44,8 +84,8 @@ export default class ClientAdd extends Component {
               <h1><b>新增客户信息</b></h1>
           </Row>
          
-          <ClientForm />
-
+          <ClientForm handleSaveSend={this.handleSaveSend.bind(this) }/>
+          <CardModal visible={this.state.visible} closeModal={this.closeModal.bind(this)}/>
       </div>
     );
   }//render
@@ -63,10 +103,10 @@ class ClientForm extends Component{
     console.log('新增保险');
     
   }
-  handleSaveSend=()=>{
-    
-       }
-       handleSave=()=>{
+
+
+handleSave=()=>{
+        console.log('save');
         
            }    
 
@@ -530,9 +570,10 @@ class ClientForm extends Component{
   <Row style={{ marginTop: 20 }} >
         <Col span="24" style={{ textAlign: 'center' }}>
           <Button style={{ marginRight: 20 }} onClick={this.handleSave.bind(this)}>保存</Button>
-          <Button type="primary" htmlType="submit" 
+          
+          <Button type="primary"
           style={{ marginRight: 20 }}
-          onClick={this.handleSaveSend.bind(this)}
+          onClick={this.props.handleSaveSend}
           >
           保存并发卡(回车)</Button>
 

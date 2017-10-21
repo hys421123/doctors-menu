@@ -3,26 +3,38 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import {Row, DatePicker, Button, Table, Input, Popconfirm } from 'antd';
-
+import moment from 'moment';
 // 代码预警， 在renderColumns中的return语句中去掉了 status的传递
 class EditableCell extends React.Component {
-  state = {
-    key: this.props.key,
-    index: this.props.index,
-    value: this.props.value,
-    editable: this.props.editable || false,
-  }
-  componentWillReceiveProps(nextProps) {
-    // console.log('willReceive');
 
+constructor(props){
+ super(props);
+//  console.log('props',props);
+ 
+ this.state = {
+  key1: this.props.key1,
+  index: this.props.index,
+  value: this.props.value,
+  editable: this.props.editable || false,
+}
+}
+
+  
+  componentWillReceiveProps(nextProps) {
+    // console.log('willReceive',nextProps);
+    // this.state.key=nextProps.key;
+    // if(nextProps.value)
 
     if (nextProps.editable !== this.state.editable) {
+      
+      
       this.setState({ editable: nextProps.editable });
       if (nextProps.editable) {
         this.cacheValue = this.state.value;
       }
     }
     if (nextProps.status && nextProps.status !== this.props.status) {
+      // console.log('receive2');
       if (nextProps.status === 'save') {
         this.props.onChange(this.state.value);
       } else if (nextProps.status === 'cancel') {
@@ -41,34 +53,44 @@ class EditableCell extends React.Component {
 
     this.setState({ value });
   }
+
+  dateOnChange=(date,dateString)=>{
+    // console.warn( dateString);
+    const value=dateString;
+    this.props.onChange(value);
+    
+        this.setState({ value });
+  }
+
   render() {
-    const { key, value, editable } = this.state;
+    const { key1, value, editable } = this.state;
 
-    let value1 = 'undefined';
-
+    let value1 = '';
+    let moment1=null;
+    const dateFormat = 'YYYY/MM/DD';
     if (value !== undefined) {
 
       value1 = value;
+      if(key1=='insurance_validity'&&value!==''){
+        moment1=   moment(value, dateFormat);
+     }
     }
-
-    // if(key=='insurance_validity'){
-    //     console.log('key',key);
-    // }
-
-    // key=='insurance_validity' ?
-    // <div>  <DatePicker
-    //     placeholder="年/月/日"
-    //     />
-    // </div>
-    // :
-
+    
+   
     return (
       <div>
-
-
         {
           editable ?
-
+          key1=='insurance_validity' ?
+    <div>  
+      <DatePicker
+        defaultValue={moment1}
+        onChange={this.dateOnChange.bind(this)}
+        placeholder="年/月/日"
+        />
+    </div>
+    :
+   
             <div>
               <Input
 
@@ -244,10 +266,14 @@ class AddTable extends React.Component {
     }
     let value3=0;
     //  此处value  中应为单纯的 text-----------------
+
+    // console.log('addTable_ ',key);
+    
+
     return (<EditableCell
       editable={editable}
       value={text}
-      key={key}
+      key1={key}
       index={index}
       onChange={this.handleChange(key, index)}
 

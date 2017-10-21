@@ -24,8 +24,23 @@ const Login = ({
         return
       }
 
-      // console.log('app_login');
+      console.log('value',value);
       
+      // $q.post($q.url + '/security/login',JSON.stringify(values), data => {
+
+
+      // console.log('app_login');
+      // let url="http://10.110.200.106/services/hys/contract/getById/179";
+      let url="http://10.110.200.106/services/security/login";
+      fetch(url,{
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(value),
+      }).then(response => response.json())
+                        .then(data => console.log('fetch_data',data))
+                        .catch(e => console.log("Oops, error", e));
 
       dispatch({type:'appmodel/login',payload:value})
     })

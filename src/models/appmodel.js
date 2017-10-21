@@ -19,7 +19,7 @@ export default {
       yield call(delay,1000)
       yield put({ type: 'hideLoginLoading' })
       yield call(delay,500)
-      yield put(routerRedux.push('/test4'))
+      yield put(routerRedux.push('/cus_centers/cuscenters_content'))
     }},
   reducers: {
     showLoginLoading (state) {

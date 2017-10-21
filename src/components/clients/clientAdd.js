@@ -5,7 +5,7 @@ const FormItem=Form.Item;
 const Option = Select.Option;
 const confirm = Modal.confirm;
 import CardModal from './cardModal'
-
+import AddTable from './addTable'
 
 export default class ClientAdd extends Component {
 
@@ -113,6 +113,16 @@ handleSave=()=>{
   render(){
     const { getFieldDecorator } = this.props.form;
 
+    const data=[{
+      'id':1,
+      'insurance_company':'平安保险',
+      'insurance_type':'人身险',
+      'insurance_num':'10021',
+      'insurance_validity':'2019-10-11',
+    }
+
+    ];
+
     const columns=[
       {
           title: '序号',
@@ -124,22 +134,22 @@ handleSave=()=>{
       {
           title: '保险公司',
           className: 'center',
-          dataIndex: 'card_num',
+          dataIndex: 'insurance_company',
        
         }, {
           title: '保险类型',
           className: 'center',
-          dataIndex: 'change_type',
+          dataIndex: 'insurance_type',
        
         }, {
           title: '保险号',
           className: 'center',
-          dataIndex: 'change_date',
+          dataIndex: 'insurance_num',
         
         },  {
           title: '保险效期',
           className: 'center',
-          dataIndex: 'change_reason',
+          dataIndex: 'insurance_validity',
          
         },  {
           title: '操作',
@@ -552,20 +562,25 @@ handleSave=()=>{
 
   <Row style={{ marginTop: 10 }}>
           
-      <Button 
+      {/* <Button 
       style={{background:'#37BFCB',color: 'white', marginBottom: 10 }} 
       icon="plus-circle-o"
       onClick={ this.handleAdd.bind(this) } 
       >
       新增
-      </Button>
+      </Button> */}
 
-        <Table
+        {/* <Table
             
                 columns={columns}
-                dataSource={null}
-              />
+                dataSource={data}
+                rowKey={record => record.id}
+              /> */}
+
+              <AddTable />
   </Row>
+
+  
 
   <Row style={{ marginTop: 20 }} >
         <Col span="24" style={{ textAlign: 'center' }}>
